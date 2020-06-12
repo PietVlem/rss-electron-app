@@ -1,0 +1,52 @@
+/**
+ * main.css
+ *
+ * The entry point for the css.
+ *
+ */
+
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ */
+@import "tailwindcss/base";
+
+/**
+ * This injects any component classes registered by plugins.
+ *
+ */
+@import 'tailwindcss/components';
+
+/**
+ * Here we add custom component classes; stuff we want loaded
+ * *before* the utilities so that the utilities can still
+ * override them.
+ *
+ */
+@import "globals/global.pcss";
+@import "globals/typography.pcss";
+@import "globals/webfonts.pcss";
+@import "globals/settings.pcss";
+
+@import "components/card.pcss";
+@import "components/sidebar.pcss";
+
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ */
+@import 'tailwindcss/utilities';
+
+/**
+ * Include styles for individual pages
+ *
+ */
+
+
+/**
+ * Include vendor css.
+ *
+ */
