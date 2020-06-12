@@ -1,5 +1,3 @@
-/*import Parser from "rss-parser";*/
-
 import Parser from "rss-parser";
 
 const state = {
@@ -23,9 +21,13 @@ const actions = {
         });
         parser.parseURL(CORS_PROXY + 'https://www.vrt.be/vrtnws/nl.rss.headlines.xml', (err, feed) => {
             if (err) throw err;
-            console.log(feed.items);
             let articles = [];
             feed.items.forEach(item => {
+                let duplicate = false;
+                articles.forEach(article =>{
+                    if(article.link === item.link) duplicate = true;
+                })
+                if(duplicate) return;
                 const article = {
                     link: item.link,
                     title: item.title,
@@ -35,7 +37,6 @@ const actions = {
                 }
                 articles.push(article);
             })
-            console.log(articles);
             articles.sort(function(a, b) {
                 return (a.pubDate > b.pubDate) ? -1 : ((a.pubDate < b.pubDate) ? 1 : 0);
             });
