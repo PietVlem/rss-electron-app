@@ -1,1 +1,1 @@
-# rss-electron-app
+# Rsshub
