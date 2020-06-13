@@ -1,52 +1,33 @@
-import Parser from "rss-parser";
+/*import Parser from "rss-parser";*/
+import vrt from './article-services/vrt';
 
 const state = {
-    articles: []
+    articles: [],
+    feedStreams: [],
 }
 const getters = {
-    allArticles: () => state.articles
+    allArticles: () => state.articles,
+    allFeedStreams: () => state.feedStreams
 }
 
 const actions = {
-    async fetchArticles({commit}) {
-        const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
-
-        let parser = new Parser({
-            customFields: {
-                item: [
-                    'summary',
-                    ['link', 'linkArray', {keepArray: true}]
-                ],
-            }
-        });
-        parser.parseURL(CORS_PROXY + 'https://www.vrt.be/vrtnws/nl.rss.headlines.xml', (err, feed) => {
-            if (err) throw err;
-            let articles = [];
-            feed.items.forEach(item => {
-                let duplicate = false;
-                articles.forEach(article =>{
-                    if(article.link === item.link) duplicate = true;
-                })
-                if(duplicate) return;
-                const article = {
-                    link: item.link,
-                    title: item.title,
-                    imageSrc: item.linkArray[2].$.href,
-                    summary: item.summary,
-                    pubDate: item.pubDate,
-                }
-                articles.push(article);
-            })
-            articles.sort(function(a, b) {
-                return (a.pubDate > b.pubDate) ? -1 : ((a.pubDate < b.pubDate) ? 1 : 0);
-            });
-            commit('setArticles', articles)
+    async fetchArticles({commit, dispatch}) {
+        /*Vrt-nieuws*/
+        const vrtArticles = await vrt.getVrtFeed();
+        dispatch({
+            type: "addFeedStream",
+            feedStreamName: 'vrt'
         })
+        commit('setArticles', vrtArticles)
+    },
+    addFeedStream: ({ commit }, feedStreamName) => {
+        commit('setFeedStream', feedStreamName);
     }
 }
 
 const mutations = {
-    setArticles: (state, articles) => (state.articles = articles)
+    setArticles: (state, articles) => (state.articles = articles),
+    setFeedStream: (state, feedStreamName) => (state.feedStreams.push(feedStreamName.feedStreamName)),
 }
 
 export default {

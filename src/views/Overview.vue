@@ -1,6 +1,9 @@
 <template>
     <div class="overview-view">
         <Sidebar></Sidebar>
+        <div :key="index" v-for="(item, index) in allFeedStreams">
+            <p>{{ item }}</p>
+        </div>
         <div class="article-grid">
             <div class="article-grid-inner">
                 <Card :info="item" :key="index" v-for="(item, index) in allArticles"></Card>
@@ -14,12 +17,17 @@
 
     export default {
         name: 'Overview',
+        data() {
+            return {
+                allFeeds: [],
+            }
+        },
         components: {
             'Card': () => import('@/components/Card'),
             'Sidebar': () => import('@/components/Sidebar'),
         },
         computed: {
-            ...mapGetters(['allArticles'])
+            ...mapGetters(['allArticles', 'allFeedStreams']),
         },
         methods: {
             ...mapActions(['fetchArticles']),
