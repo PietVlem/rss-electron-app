@@ -14,7 +14,9 @@
     "graphql": "^15.1.0",
     "koa": "^2.12.1",
     "koa-json": "^2.0.2",
-    "koa-router": "^9.0.1"
+    "koa-router": "^9.0.1",
+    "rss-parser": "^3.8.0",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

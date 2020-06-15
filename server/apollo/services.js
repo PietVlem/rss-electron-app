@@ -1,21 +1,11 @@
-var admin = require('firebase-admin');
-var serviceAccount = require("../firebase-service-account.json");
+const firebase = require('../database');
 
-/*
-Firestore
-*/
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://rsshub-a8ccb.firebaseio.com"
-});
-
-async function getVrtArticles() {
-    const articles = await admin
+getVrtArticles = async() => {
+    const articles = await firebase
         .firestore()
-        .collection('feeds')
-        .doc('vrt')
+        .collection('vrt')
         .get();
-    return articles.data().articles.map(article => article);
+    return articles.docs.map(article => article.data());
 }
 
 module.exports = {
