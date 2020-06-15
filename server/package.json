@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "graphql server for my rsshub app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Pieter Vleminckx",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-koa": "^2.14.4",
+    "graphql": "^15.1.0",
+    "koa": "^2.12.1",
+    "koa-json": "^2.0.2",
+    "koa-router": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
