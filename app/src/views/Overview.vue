@@ -8,29 +8,26 @@
                 </li>
             </ul>-->
         </div>
-
-        <!--<ApolloQuery :query="require('../graphql/articles.gql')">
-            <template v-slot="{ result: { loading, error, data } }">
-                <div v-if="data">
-                    <div :key="article.id" v-for="article in data.allArticles">{{article.title}}</div>
-                </div>
-            </template>
-        </ApolloQuery>-->
-        <div class="article-grid">
-            <div class="article-grid-inner">
-                <!--<Card :info="item" :key="index" v-for="(item, index) in allArticles"/>-->
-            </div>
+        <div>
+            <ApolloQuery class="article-grid" :query="require('../graphql/articles.gql')">
+                <template v-slot="{ result: { loading, error, data } }">
+                    <div v-if="data" class="article-grid-inner">
+                        <Card :info="article" :key="article.id" v-for="article in data.articles"/>
+                    </div>
+                </template>
+            </ApolloQuery>
         </div>
     </div>
 </template>
 
 <script>
+
     export default {
         name: 'Overview',
         components: {
-            /*'Card': () => import('@/components/Card'),*/
+            'Card': () => import('@/components/Card'),
             /*'Sidebar': () => import('@/components/Sidebar'),*/
-        }
+        },
     }
 </script>
 

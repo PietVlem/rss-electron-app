@@ -1,4 +1,4 @@
-query articles {
+query articles{
     articles {
         id
         link
