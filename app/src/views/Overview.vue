@@ -2,62 +2,35 @@
     <div class="overview-view">
         <!--<Sidebar :allFeedStreams="allFeedStreams"/>-->
         <div class="siderbar">
-            <ul>
+            <!--<ul>
                 <li :key="index" v-for="(FeedStream, index) in allFeedStreams">
                     {{ FeedStream }}
                 </li>
-            </ul>
+            </ul>-->
         </div>
+
+        <!--<ApolloQuery :query="require('../graphql/articles.gql')">
+            <template v-slot="{ result: { loading, error, data } }">
+                <div v-if="data">
+                    <div :key="article.id" v-for="article in data.allArticles">{{article.title}}</div>
+                </div>
+            </template>
+        </ApolloQuery>-->
         <div class="article-grid">
             <div class="article-grid-inner">
-                <Card :info="item" :key="index" v-for="(item, index) in allArticles"/>
+                <!--<Card :info="item" :key="index" v-for="(item, index) in allArticles"/>-->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex';
-    import Parser from 'rss-parser';
-
     export default {
         name: 'Overview',
-        data() {
-            return {
-                allFeeds: [],
-            }
-        },
         components: {
-            'Card': () => import('@/components/Card'),
+            /*'Card': () => import('@/components/Card'),*/
             /*'Sidebar': () => import('@/components/Sidebar'),*/
-        },
-        computed: {
-            ...mapGetters(['allArticles', 'allFeedStreams']),
-        },
-        methods: {
-            ...mapActions(['fetchArticles']),
-        },
-        created() {
-            this.fetchArticles();
-
-            let parser = new Parser({
-                customFields: {
-                    item: [
-                        'content',
-                    ],
-                }
-            });
-            (async () => {
-
-                let feed = await parser.parseURL('https://www.theverge.com/rss/index.xml');
-                console.log(feed);
-
-                /*feed.items.forEach(item => {
-                    console.log(item.title + ':' + item.link)
-                });*/
-
-            })();
-        },
+        }
     }
 </script>
 

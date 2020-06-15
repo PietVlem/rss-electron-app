@@ -2,10 +2,10 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const json = require('koa-json');
-const {ApolloServer, gql} = require('apollo-server-koa');
+const {ApolloServer} = require('apollo-server-koa');
 
 /* files */
-const utils = require('./utilities');
+const rssStreams = require('./rss-services/vrt');
 const resolvers = require('./apollo/resolvers');
 const typeDefs = require('./apollo/typedefs');
 
@@ -17,7 +17,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 /*router.get('/test', ctx => (ctx.body = {'msg': 'Hello World'}));*/
 
-utils.getVrtArticles();
+rssStreams.getVrtArticles();
 
 /* The ApolloServer constructor requires two parameters: your schema definition and your set of resolvers. */
 const apolloServer = new ApolloServer({typeDefs, resolvers});

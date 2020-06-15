@@ -1,6 +1,6 @@
 let Parser = require('rss-parser');
 const {v4: uuidv4} = require('uuid');
-const firebase = require('./database');
+const firebase = require('../database');
 
 /*const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";*/
 
