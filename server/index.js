@@ -1,9 +1,13 @@
+/* pakages */
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
+const json = require('koa-json');
 const {ApolloServer, gql} = require('apollo-server-koa');
+
+/* files */
 const resolvers = require('./apollo/resolvers');
 const typeDefs = require('./apollo/typedefs');
-const json = require('koa-json');
+
 
 const app = new Koa();
 const router = new KoaRouter();

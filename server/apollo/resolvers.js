@@ -1,11 +1,15 @@
-const books = [
+const services = require('./services');
+
+/*services.getVrtArticles();*/
+
+const articles = [
     {
+        id: '1',
         title: 'Harry Potter and the Chamber of Secrets',
-        author: 'J.K. Rowling',
     },
     {
+        id: '2',
         title: 'Jurassic Park',
-        author: 'Michael Crichton',
     },
 ];
 
@@ -13,7 +17,7 @@ const books = [
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
     Query: {
-        books: () => books,
+        articles: () => services.getVrtArticles(),
     },
 };
 
