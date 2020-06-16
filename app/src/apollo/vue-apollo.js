@@ -4,8 +4,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
-  // You should use an absolute URL here
+  /* Local server */
   uri: 'http://localhost:3000/graphql',
+  /* Production server */
+  /*uri: 'https://rsshub-pieter.herokuapp.com/graphql',*/
 })
 
 // Cache implementation

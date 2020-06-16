@@ -1,17 +1,25 @@
 <template>
     <div @click="show" class="card">
         <img :src="info.imageSrc" alt="">
-        {{ info.title }}
+        <span>{{ old }}</span>
+        <h2>{{ info.title }}</h2>
     </div>
 </template>
 
 <script>
+    import moment from 'moment';
+
     export default {
         name: 'Card',
         props: {
             info: {
                 type: Object,
             },
+        },
+        computed: {
+            old: function() {
+                return moment(this.info.pubDate).fromNow();
+            }
         },
         methods: {
             show() {
