@@ -1,6 +1,6 @@
 <template>
     <ArticleLayout :pagetitle="'The verge'">
-        <ApolloQuery :query="require('../graphql/verge-articles.gql')" class="articles__grid">
+        <ApolloQuery :query="require('../graphql/queries/verge-articles.gql')" class="articles__grid">
             <template v-slot="{ result: { loading, error, data } }">
                 <div class="articles__grid-inner" v-if="data">
                     <Card :info="article" :key="article.id" v-for="article in data.vergeArticles"/>

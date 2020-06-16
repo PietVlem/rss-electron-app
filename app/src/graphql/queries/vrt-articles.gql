@@ -1,0 +1,7 @@
+#import "../fragments/article-fragment.gql"
+
+query articles{
+    vrtArticles {
+        ...articleFields
+    }
+}

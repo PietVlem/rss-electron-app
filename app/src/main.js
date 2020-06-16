@@ -4,7 +4,7 @@ import VueApollo from 'vue-apollo'
 
 import App from './App.vue'
 import router from './router'
-import apolloClient from "./vue-apollo";
+import apolloClient from "./apollo/vue-apollo";
 import './assets/style/main.pcss';
 
 const apolloProvider = new VueApollo({

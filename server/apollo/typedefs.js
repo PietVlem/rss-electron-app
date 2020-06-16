@@ -1,13 +1,15 @@
 const { gql } = require('apollo-server-koa');
 
-const typeDefs = gql`    
+const typeDefs = gql`
+    scalar DateTime
+    
     type article {
         id: String,
         link: String,
         title: String,
         imageSrc: String,
         summary: String,
-        pubDate: String,
+        pubDate: DateTime,
     }
     
     type Query {

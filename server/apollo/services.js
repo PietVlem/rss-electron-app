@@ -5,7 +5,10 @@ getVrtArticles = async() => {
         .firestore()
         .collection('vrt')
         .get();
-    return articles.docs.map(article => article.data());
+    const payload = articles.docs.map(article => article.data());
+    return payload.sort(function (a, b) {
+        return new Date(b.pubDate) - new Date(a.pubDate);
+    });
 }
 
 getVergeArticles = async() => {
@@ -13,7 +16,10 @@ getVergeArticles = async() => {
         .firestore()
         .collection('verge')
         .get();
-    return articles.docs.map(article => article.data());
+    const payload = articles.docs.map(article => article.data());
+    return payload.sort(function (a, b) {
+        return new Date(b.pubDate) - new Date(a.pubDate);
+    });
 }
 
 module.exports = {

@@ -1,0 +1,8 @@
+fragment articleFields on article {
+    id
+    link
+    title
+    imageSrc
+    summary
+    pubDate
+}

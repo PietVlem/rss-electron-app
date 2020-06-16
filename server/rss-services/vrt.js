@@ -20,8 +20,12 @@ const getVrtArticles = async () => {
         const oldArticles = []
         getOldArticles.docs.map(article => oldArticles.push(article.data()));
 
-        const feedWithoutDuplicates = Array.from(new Set(response.items));
-        for (const item of feedWithoutDuplicates) {
+        const uniqueFeed = Array.from(new Set(response.items.map(a => a.link)))
+            .map(link => {
+                return response.items.find(a => a.link === link)
+            })
+
+        for (const item of uniqueFeed) {
             let duplicate = false;
             oldArticles.forEach(article =>{
                 if(article.link === item.link) duplicate = true;
