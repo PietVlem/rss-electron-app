@@ -8,6 +8,16 @@ getVrtArticles = async() => {
     return articles.docs.map(article => article.data());
 }
 
+getVergeArticles = async() => {
+    const articles = await firebase
+        .firestore()
+        .collection('verge')
+        .get();
+    return articles.docs.map(article => article.data());
+}
+
 module.exports = {
+    /* queries */
     getVrtArticles,
+    getVergeArticles,
 }

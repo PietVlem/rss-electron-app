@@ -1,5 +1,5 @@
 query articles{
-    articles {
+    vergeArticles {
         id
         link
         title

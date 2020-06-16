@@ -1,0 +1,10 @@
+query articles{
+    vrtArticles {
+        id
+        link
+        title
+        imageSrc
+        summary
+        pubDate
+    }
+}

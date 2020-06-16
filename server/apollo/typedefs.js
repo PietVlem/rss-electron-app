@@ -11,7 +11,8 @@ const typeDefs = gql`
     }
     
     type Query {
-        articles: [article]
+        vrtArticles: [article],
+        vergeArticles: [article],
     }
 `;
 

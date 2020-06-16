@@ -10,9 +10,14 @@ Vue.use(VueRouter)
     component: () => import('@/views/Overview.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('@/views/About.vue')
+    path: '/vrt',
+    name: 'vrt',
+    component: () => import('@/views/Vrt.vue')
+  },
+  {
+    path: '/verge',
+    name: 'verge',
+    component: () => import('@/views/Verge.vue')
   }
 ]
 

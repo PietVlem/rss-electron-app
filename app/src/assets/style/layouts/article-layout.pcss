@@ -1,0 +1,26 @@
+.overview-view {
+    @apply flex min-h-screen;
+
+    .articles {
+        @apply ml-auto;
+
+        &__header {
+            @apply w-4/5 mx-auto px-3 pt-8;
+        }
+
+        &__grid {
+            @apply flex justify-center;
+            width: calc(100vw - 320px);
+        }
+
+        &__grid-inner {
+            @apply w-4/5 -mx-3 mt-6 flex flex-wrap;
+
+            h1 {
+                @apply w-full mx-3 mb-8;
+            }
+        }
+
+    }
+}
+

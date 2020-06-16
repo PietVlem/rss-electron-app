@@ -4,7 +4,8 @@ const services = require('./services');
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
     Query: {
-        articles: () => services.getVrtArticles(),
+        vrtArticles: () => services.getVrtArticles(),
+        vergeArticles: () => services.getVergeArticles(),
     },
 };
 
