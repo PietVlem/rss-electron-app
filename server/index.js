@@ -21,10 +21,10 @@ app.use(cors())
 
 router.get('/', ctx => (ctx.body = {'msg': 'Hello World 😉'}));
 
-setInterval(function () {
+/*setInterval(function () {*/
     rssStreams.getArticles();
-    console.log('updating articles db...')
-}, 300000);
+/*    console.log('updating articles db...')
+}, 300000);*/
 
 /* The ApolloServer constructor requires two parameters: your schema definition and your set of resolvers. */
 const apolloServer = new ApolloServer({typeDefs, resolvers});
